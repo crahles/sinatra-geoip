@@ -4,18 +4,18 @@ Extremely simple IP to Lat/Long API demo. Use at your own risk.
 
 # Author
 
-Geoffrey Grosenbach http://peepcode.com
+Originally from Geoffrey Grosenbach http://peepcode.com / https://github.com/topfunky/sinatra-geoip
+Tweaked by Christoph Rahles (using Bundler, new GeoIP-Version, geoip-c ruby extension, fixing umlauts in response and startable via passenger)
 
 # Requirements
 
-* Build ext/GeoIP-1.4.6 (./configure && make && sudo make install)
+* Build ext/GeoIP-1.4.8 (./configure && make && sudo make install)
 * Download binary GeoLiteCity.dat database from http://www.maxmind.com/app/geolitecity
 * Put GeoLiteCity.dat in "./data"
-* Isolate will install other dependencies when you launch the app.
 
 # Run
 
-    rackup -p 3000 config.ru
+    rackup -p 3000 config.ru or run it with passenger
 
 # API
 

@@ -1,12 +1,13 @@
-if ENV['RACK_ENV'] != "production"
-  Dir[File.dirname(__FILE__) + "/vendor/*"].each do |gemdir|
-    $: << gemdir + "/lib"
-  end
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require :default
+require "./app"
 
-  require "rubygems"
-  require "isolate/now"
-end
+root_dir = File.dirname(__FILE__)
 
-require 'init'
+set :environment, :production
+set :root,  root_dir
+set :app_file, File.join(root_dir, 'app.rb')
+disable :run
 
 run Sinatra::Application
