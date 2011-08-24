@@ -10,7 +10,7 @@ get "/geoip/api/locate.json" do
   ip_info = GEOIP_DB.look_up(params[:ip])
   unless ip_info.nil?
     ip_info.each do |key, value|
-      ip_info[key] = value.force_encoding("UTF-8") if value.is_a? String
+      ip_info[key] = value.force_encoding("UTF-8") if (value.is_a?(String) && String.respond_to?(:force_encoding))
     end
   end
   content_type 'application/json', :charset => 'utf-8'
